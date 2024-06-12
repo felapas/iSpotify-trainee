@@ -1,0 +1,11 @@
+.sidebar{
+    width: 30vw;
+    height: 100vh;
+    background-color: #cccccc ;
+}
+
+.navbar-options{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
