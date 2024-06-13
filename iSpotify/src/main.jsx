@@ -4,7 +4,7 @@ import App from './App.jsx'
 import Login from './routes/Login.jsx';
 import CreateUser from './routes/CreateUser.jsx';
 import Artists from './routes/Artists.jsx';
-
+import LikedSongs from './routes/LikedSongs.jsx';
 
 import { createRoot } from "react-dom/client";
 import {
@@ -16,25 +16,28 @@ import {
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element: <App/>,
+    path: "/",
+    element: <App />,
     children: [
       {
-        path:"login",
-        element: <Login/>
+        path: "login",
+        element: <Login />,
       },
       {
-        path:"register",
-        element:<CreateUser/>
+        path: "register",
+        element: <CreateUser />,
       },
       {
-        path:"artists",
-        element:<Artists/>
+        path: "artists",
+        element: <Artists />,
       },
-      
-    ]
-  }
-])
+      {
+        path: "curtidas",
+        element: <LikedSongs/>,
+      },
+    ],
+  },
+]);
 
 
 

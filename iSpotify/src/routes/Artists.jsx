@@ -1,5 +1,5 @@
 
-import ArtistCard from '../components/ArtistCard';
+
 import ArtistsList from '../components/ArtistsList';
 import "./Artists.css"
 
