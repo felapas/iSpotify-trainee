@@ -1,5 +1,5 @@
 .artists-list{
     display: flex;
     flex-wrap: wrap;
-    gap: 25px 20px
+    gap: 1.5625rem 1.25rem; 
 }

@@ -9,28 +9,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await api.post("/users/login", {
-        email,
-        password,
-      });
-
-      if (response.status === 200) {
-        setMessage("Login realizado com sucesso!");
-        const token = response.data.token;
-        localStorage.setItem("authToken", token); // Salvar token no localStorage
-      } else {
-        setMessage("Falha no login");
-      }
-    } catch (error) {
-      if (error.response) {
-        setMessage(`Erro na resposta da API: ${error.response.data.msg}`);
-      } else if (error.request) {
-        setMessage("Erro na requisição: Sem resposta do servidor");
-      } else {
-        setMessage(`Erro: ${error.message}`);
-      }
-    }
+    
   };
 
   return (

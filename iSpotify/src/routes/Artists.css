@@ -1,12 +1,11 @@
-
 .artists-container{
-    padding: 50px;
+    padding: 3.125rem; 
     background-color:#111111 ;
-    width: 100%;
+    width: 75vw;
 }
 
 .artists-container h2{
-    font-size: 32px;
+    font-size: 2rem; 
     color: #FFFFFF;
-    margin: 50px 0px;
+    margin: 3.125rem 0; 
 }
