@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import api from "../api";
+import {Link} from "react-router-dom"
 
 const CreateUser = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
-  const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,18 +14,8 @@ const CreateUser = () => {
 
   return (
     <div>
-      <h2>Criar Usuário</h2>
+      <h2>Inscrever-se em uma conta grátis do iSpotify&reg;</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nome:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nome"
-            required
-          />
-        </div>
         <div>
           <label>Email:</label>
           <input
@@ -37,29 +27,26 @@ const CreateUser = () => {
           />
         </div>
         <div>
-          <label>Senha:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Senha"
+            placeholder="Crie uma senha"
             required
           />
         </div>
         <div>
-          <label>Role:</label>
-          <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Como devemos chamar você?"
             required
-          >
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select>
+          />
         </div>
-        <button type="submit">Criar Usuário</button>
+        <button type="submit">CADASTRAR</button>
       </form>
-      {message && <p>{message}</p>}
+      <p>Já é um usuário do iSpotify?</p> <Link to="/auth/login">FAÇA LOGIN</Link>
     </div>
   );
 };

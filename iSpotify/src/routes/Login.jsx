@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import api from "../api";
+import { Link } from "react-router-dom";
+import "./Login.css"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +16,8 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h1 className="logo-login">iSpotify &reg;</h1>
+      <h2 className="slogan">Música para todos.</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
@@ -36,9 +39,11 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">ENTRAR</button>
       </form>
-      {message && <p>{message}</p>}
+      <div className="subscribe">
+        <p>NÃO TEM UMA CONTA?</p> <Link to="/auth/register">INSCREVA-SE</Link>
+      </div>
     </div>
   );
 };

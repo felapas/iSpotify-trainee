@@ -26,7 +26,7 @@ const Navbar = () => {
       <div className="bottom-part">
         <div className="navbar-options">
           <span className="material-symbols-outlined">login</span>
-          <Link to="login" className="login">
+          <Link to="/auth/login" className="login">
             Login
           </Link>
         </div>
