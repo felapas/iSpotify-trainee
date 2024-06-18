@@ -1,6 +1,6 @@
-import React from "react";
 
-import "./ArtistCard.css"
+import React from "react";
+import "./ArtistCard.css";
 
 const ArtistCard = ({ artist }) => {
   return (

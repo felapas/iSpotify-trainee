@@ -1,14 +1,23 @@
+
 import React, { useEffect, useState } from "react";
-import artistsData from "../artists";
+import api from "../api"; 
 import ArtistCard from "./ArtistCard";
-import "./ArtistsList.css"
+import "./ArtistsList.css";
 
 const ArtistsList = () => {
   const [artists, setArtists] = useState([]);
 
   useEffect(() => {
-    // Simular uma chamada de API
-    setArtists(artistsData);
+    const fetchArtists = async () => {
+      try {
+        const response = await api.get("/artists");
+        setArtists(response.data); 
+      } catch (error) {
+        console.error("Erro ao buscar artistas:", error);
+      }
+    };
+
+    fetchArtists();
   }, []);
 
   return (
