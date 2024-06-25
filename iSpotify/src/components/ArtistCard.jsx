@@ -1,5 +1,5 @@
 
-import React from "react";
+import { Link } from "react-router-dom";
 import "./ArtistCard.css";
 
 const ArtistCard = ({ artist }) => {
@@ -9,7 +9,11 @@ const ArtistCard = ({ artist }) => {
         <img src={artist.image} alt={artist.name} className="artist-img" />
       </div>
       <div className="artist-info">
-        <h4 className="artist-name">{artist.name}</h4>
+        <h4 className="artist-name">
+          <Link to={`/artists/${artist.id}`} className="artist-link">
+            {artist.name}
+          </Link>
+        </h4>
         <p>Artista</p>
       </div>
     </div>

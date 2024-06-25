@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from "react";
-import api from "../api"; 
+import api from "../api";
 import ArtistCard from "./ArtistCard";
 import "./ArtistsList.css";
 
@@ -11,7 +10,7 @@ const ArtistsList = () => {
     const fetchArtists = async () => {
       try {
         const response = await api.get("/artists");
-        setArtists(response.data); 
+        setArtists(response.data);
       } catch (error) {
         console.error("Erro ao buscar artistas:", error);
       }
@@ -23,7 +22,7 @@ const ArtistsList = () => {
   return (
     <div>
       <div className="artists-list">
-        {artists.map((artist) => (
+        {artists.slice(0, 12).map((artist) => (
           <ArtistCard key={artist.id} artist={artist} />
         ))}
       </div>

@@ -22,10 +22,11 @@ const Register = () => {
 
       if (response.status === 201) {
         
-        const token = response.data.token;
-        localStorage.setItem("authToken", token);
-
         
+        const loginresponse = await api.post("/users/login", {
+        email,
+        password,
+      });
         navigate("/artists");
       }
     } catch (error) {

@@ -26,8 +26,13 @@
 
 .artist-name{
     font-size: 0.9375rem; 
-    color: #ffffff;
     margin: 0.9375rem 0; 
+    
+}
+
+.artist-link{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .artist-info p{

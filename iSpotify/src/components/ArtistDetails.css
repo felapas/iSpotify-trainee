@@ -1,0 +1,22 @@
+.artist-details{
+    max-width: 100%;
+    max-height: 40%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin:5rem 2rem;
+}
+
+.artist-details_title > h2{
+    color: white;
+    font-size: 48px;
+}
+.artist-details_title > h3{
+    color: white;
+    font-size: 17px;
+}
+
+.artist-details_img > img{
+    width: 200px;
+    height: 200px;
+}

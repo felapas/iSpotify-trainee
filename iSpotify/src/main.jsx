@@ -1,11 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import Login from './routes/Login.jsx';
-import Register from './routes/Register.jsx';
-import Artists from './routes/Artists.jsx';
-import LikedSongs from './routes/LikedSongs.jsx';
-import Auth from "./Auth.jsx"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import Login from "./routes/Login.jsx";
+import Register from "./routes/Register.jsx";
+import Artists from "./routes/Artists.jsx";
+import ArtistDetails from "./routes/ArtistPage.jsx";
+import LikedSongs from "./routes/LikedSongs.jsx";
+import Auth from "./Auth.jsx";
 
 import { createRoot } from "react-dom/client";
 import {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "artists",
         element: <Artists />,
+      },
+      {
+        path: "artists/:id",
+        element: <ArtistDetails />,
       },
       {
         path: "curtidas",
@@ -45,8 +50,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

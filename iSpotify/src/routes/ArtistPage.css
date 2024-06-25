@@ -1,0 +1,22 @@
+.artistpage-container{
+    background: linear-gradient( rgba(85,85,85,1) 0%, rgba(0,0,0,1) 70%);
+    width: 100%;
+}
+
+.music-controls{
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-play-circle{
+    color: #3FE168;
+    font-size: 65px;
+}
+
+.btn-favorite, .btn-download, .btn-more{
+    color: #cccccc;
+    font-size: 36px;
+}
