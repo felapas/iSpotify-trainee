@@ -7,8 +7,9 @@ import Artists from "./routes/Artists.jsx";
 import ArtistDetails from "./routes/ArtistPage.jsx";
 import LikedSongs from "./routes/LikedSongs.jsx";
 import Auth from "./Auth.jsx";
+import MyAccount from "./routes/MyAccount.jsx";
 
-import { createRoot } from "react-dom/client";
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         path: "curtidas",
         element: <LikedSongs />,
       },
+      {
+        path: "conta",
+        element: <MyAccount />,
+      },
     ],
   },
   {
@@ -47,6 +52,7 @@ const router = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
+      
     ],
   },
 ]);

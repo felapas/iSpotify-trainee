@@ -40,12 +40,15 @@
     font-size: 1.25rem; 
 }
 
-.login, .register{
+.logout{
     color: #cccccc;
     text-decoration: none;
     font-size: 1.25rem; 
     font-weight: 700;
     margin: 0 0.3125rem; 
+    cursor: pointer;
+    background:none;
+    border: none;
 }
 
 .navbar-link{

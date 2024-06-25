@@ -19,7 +19,7 @@ const Login = () => {
         password,
       });
 
-      console.log(response);
+      
 
       if (response.status === 204) {
         setMessage("Login realizado com sucesso!");
