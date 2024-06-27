@@ -1,5 +1,5 @@
 
-.account-container {
+.account-container, .form-container {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -47,13 +47,18 @@ outline: none;
 }
 
 .account-button {
-  background-color: #3FE168;
-  color: #ffffff;
+  
 width: 245px;
 height: 45px;
 border-radius: 30px;
 border: none;
 cursor: pointer;
+}
+
+
+.green-btn{
+  background-color: #3FE168;
+  color: #ffffff;
 }
 
 .buttons-container{

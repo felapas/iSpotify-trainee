@@ -1,19 +1,7 @@
 import React from "react";
-import api from "../api";
 import "./PlaylistSongs.css";
 
-const PlaylistSongs = ({ artist, songs }) => {
-  const handleFavorite = async (songId) => {
-    try {
-      const response = await api.post(`/users-songs/${songId}`);
-      if (response.status === 201) {
-        console.log("Song favorited successfully");
-      }
-    } catch (error) {
-      console.error("Erro ao favoritar a música:", error);
-    }
-  };
-
+const PlaylistSongs = ({ songs, onFavoriteToggle, onDeleteFavorite }) => {
   return (
     <div className="artist-songs">
       <div className="labels">
@@ -24,7 +12,7 @@ const PlaylistSongs = ({ artist, songs }) => {
       <hr />
       <div className="songs-list">
         {songs.map((song, index) => (
-          <div key={song.title} className="song-card">
+          <div key={song.id} className="song-card">
             <div className="song-info">
               <div className="song-info_titles">
                 <div className="song-info_titles-inde">
@@ -32,20 +20,27 @@ const PlaylistSongs = ({ artist, songs }) => {
                 </div>
                 <div className="song-info_titles-text">
                   <h4>{song.title}</h4>
-                  <p>{artist.name}</p>
+                  <p>{song.artistName}</p>
                 </div>
               </div>
               <p>{song.genre}</p>
               <div className="song-actions">
                 <span
-                  className="material-symbols-outlined btn-favorite-song"
-                  onClick={() => handleFavorite(song.id)}
+                  className={`material-symbols-outlined btn-favorite-song ${
+                    song.isFavorite ? "favorite-active" : ""
+                  }`}
+                  onClick={() => onFavoriteToggle(song.id)}
                 >
                   favorite
                 </span>
-                <span className="material-symbols-outlined btn-delete">
-                  delete
-                </span>
+                {onDeleteFavorite && (
+                  <span
+                    className="material-symbols-outlined btn-delete"
+                    onClick={() => onDeleteFavorite(song.id)}
+                  >
+                    delete
+                  </span>
+                )}
               </div>
             </div>
           </div>

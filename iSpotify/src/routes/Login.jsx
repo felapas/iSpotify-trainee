@@ -1,73 +1,90 @@
 import { useState } from "react";
 import api from "../api";
 import { Link } from "react-router-dom";
-import "./Login.css"
 import { useNavigate } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate()
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await api.post("/users/login", {
-        email,
-        password,
-      });
-
-      
+      const response = await api.post("/users/login", { email, password });
 
       if (response.status === 204) {
         setMessage("Login realizado com sucesso!");
-        navigate("/artists")
-        
+        navigate("/artists");
       }
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data)
         setMessage(`${error.response.data}`);
       } else if (error.request) {
         setMessage("Erro na requisição: Sem resposta do servidor");
       } else {
         setMessage(`Erro: ${error.message}`);
       }
+      setOpen(true);
     }
   };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
   return (
-    <div>
-      <h1 className="logo-login">iSpotify &reg;</h1>
+    <div className="form-container">
+      <h1 className="form-title">iSpotify &reg;</h1>
       <h2 className="slogan">Música para todos.</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+        <div className="input-container">
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
+            className="account-field"
           />
+          <span className="material-symbols-outlined input-icon">mail</span>
         </div>
-        <div>
-          <label>Senha:</label>
+        <div className="input-container">
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Senha"
             required
+            className="account-field"
           />
+          <span className="material-symbols-outlined input-icon">lock</span>
         </div>
-        <button type="submit">ENTRAR</button>
+        <div className="buttons-container">
+          <button className="account-button white-btn" type="submit">
+            ENTRAR
+          </button>
+        </div>
       </form>
-      {message && <p>{message}</p>}
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          {message}
+        </Alert>
+      </Snackbar>
       <div className="subscribe">
-        <p>NÃO TEM UMA CONTA?</p> <Link to="/auth/register">INSCREVA-SE</Link>
+        <p>NÃO TEM UMA CONTA?</p>{" "}
+        <Link to="/auth/register" className="auth-link">
+          INSCREVA-SE
+        </Link>
       </div>
     </div>
   );

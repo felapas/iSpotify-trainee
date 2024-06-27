@@ -1,0 +1,44 @@
+.liked-background{
+    background: linear-gradient( #2a16ac77 0%, #000000 70%);
+}
+
+.loading-liked{
+    background: linear-gradient( #2a16ac77 0%, #000000 70%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading-text{
+    font-size: 2rem;
+    color: white;
+    text-transform: uppercase;
+
+}
+
+.no-favorite-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.no-favorite-text{
+    font-size: 2.5rem;
+    color: white;
+
+}
+
+.loading-symbol{
+    color: white;
+    font-size: 2.5rem;
+}
+
+.no-favorite-link{
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+}

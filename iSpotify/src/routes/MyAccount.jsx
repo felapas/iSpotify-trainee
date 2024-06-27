@@ -3,9 +3,6 @@ import api from "../api";
 import {
   Modal,
   Box,
-  Typography,
-  TextField,
-  Button,
   Alert,
 } from "@mui/material";
 import "./MyAccount.css";
@@ -133,7 +130,7 @@ const MyAccount = () => {
           </button>
           <button
             type="button"
-            className="account-button"
+            className="account-button green-btn"
             onClick={handlePasswordModalOpen}
           >
             Trocar Senha

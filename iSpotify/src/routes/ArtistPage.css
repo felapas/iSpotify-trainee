@@ -14,9 +14,20 @@
 .btn-play-circle{
     color: #3FE168;
     font-size: 65px;
+    cursor: pointer;
 }
 
 .btn-favorite, .btn-download, .btn-more{
     color: #cccccc;
     font-size: 36px;
+    cursor: pointer;
+}
+
+.loading-artist{
+    background: linear-gradient( rgba(85,85,85,1) 0%, rgba(0,0,0,1) 70%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

@@ -58,7 +58,7 @@ const handleLogout = async () => {
       </div>
       <div className="bottom-part">
         <div className="navbar-options">
-          <span className="material-symbols-outlined">login</span>
+          <span className="material-symbols-outlined">logout</span>
           <button  className="logout" onClick={handleLogout}>Logout</button>
         </div>
       </div>
