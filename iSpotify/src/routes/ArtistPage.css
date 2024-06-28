@@ -1,6 +1,7 @@
 .artistpage-container{
     background: linear-gradient( rgba(85,85,85,1) 0%, rgba(0,0,0,1) 70%);
-    width: 100%;
+    width: 75vw;
+    box-sizing: border-box;
 }
 
 .music-controls{

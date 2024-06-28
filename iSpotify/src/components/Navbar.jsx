@@ -12,7 +12,8 @@ const handleLogout = async () => {
     try {
       const response = await api.post(`/users/logout`);
       if (response.status == 204) {
-        navigate("/artists")
+        localStorage.removeItem("likedSongs"); 
+        navigate("/auth/login")
       }
     } 
     

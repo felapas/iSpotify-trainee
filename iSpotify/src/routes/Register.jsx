@@ -53,7 +53,7 @@ const Register = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="auth-container">
       <h2 className="form-title">
         Inscrever-se em uma <br /> conta grátis do
         <br /> iSpotify&reg;

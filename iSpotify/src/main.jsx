@@ -8,20 +8,24 @@ import ArtistDetails from "./routes/ArtistPage.jsx";
 import LikedSongs from "./routes/LikedSongs.jsx";
 import Auth from "./Auth.jsx";
 import MyAccount from "./routes/MyAccount.jsx";
-
-
+import ErrorPage from "./routes/ErrorPage.jsx";
 import {
   createBrowserRouter,
   RouterProvider,
   Route,
-  Link,
+  Navigate,
 } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Navigate to="/artists" replace />,
+      },
       {
         path: "artists",
         element: <Artists />,
@@ -43,7 +47,12 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <Auth />,
+    errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/auth",
+        element: <Navigate to="/auth/login" replace />,
+      },
       {
         path: "login",
         element: <Login />,
@@ -52,7 +61,6 @@ const router = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
-      
     ],
   },
 ]);

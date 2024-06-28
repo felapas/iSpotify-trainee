@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className="auth-container">
       <h1 className="form-title">iSpotify &reg;</h1>
       <h2 className="slogan">Música para todos.</h2>
       <form onSubmit={handleSubmit}>

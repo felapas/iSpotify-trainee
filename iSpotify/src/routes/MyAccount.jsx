@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../api";
-import {
-  Modal,
-  Box,
-  Alert,
-} from "@mui/material";
+import { Modal, Box, Alert } from "@mui/material";
 import "./MyAccount.css";
 
 const MyAccount = () => {
@@ -85,14 +81,25 @@ const MyAccount = () => {
       setPasswordError("As novas senhas não coincidem.");
       return;
     }
+
     try {
-      await api.put(`/users/${user.id}`, {
-        password: newPassword,
-      });
-      handlePasswordModalClose();
+      const response = await api.post(
+        "users/login",
+        { email: user.email, password: currentPassword },
+        { withCredentials: false }
+      );
+
+      if (response.status === 204) {
+        await api.put(`/users/${user.id}`, { password: newPassword });
+        handlePasswordModalClose();
+      }
     } catch (error) {
-      console.error("Erro ao trocar senha:", error);
-      setPasswordError("Erro ao trocar senha. Tente novamente.");
+      if (error.response && error.response.status === 403) {
+        setPasswordError("Senha atual incorreta.");
+      } else {
+        console.error("Erro ao trocar senha:", error);
+        setPasswordError("Erro ao trocar senha. Tente novamente.");
+      }
     }
   };
 
