@@ -16,26 +16,22 @@ const LikedSongs = () => {
 
   useEffect(() => {
     const fetchSongs = async () => {
+      const likedSongsIds =
+        JSON.parse(localStorage.getItem("likedSongs")) || [];
+
       try {
-        const response = await api.get("/songs");
-        const songsData = response.data;
+        const songRequests = likedSongsIds.map((id) => api.get(`/songs/${id}`));
+        const songsData = await Promise.all(songRequests);
 
-        const likedSongsIds =
-          JSON.parse(localStorage.getItem("likedSongs")) || [];
-        const songsWithFavoriteStatus = songsData.map((song) => ({
-          ...song,
-          isFavorite: likedSongsIds.includes(song.id),
-        }));
-
-        const artistRequests = songsWithFavoriteStatus.map((song) =>
-          api.get(`/artists/${song.artist_id}`)
+        const songsWithArtistsRequests = songsData.map((song) =>
+          api.get(`/artists/${song.data.artist_id}`).then((artistData) => ({
+            ...song.data,
+            artistName: artistData.data.name,
+            isFavorite: true,
+          }))
         );
-        const artistsData = await Promise.all(artistRequests);
 
-        const songsWithArtists = songsWithFavoriteStatus.map((song, index) => ({
-          ...song,
-          artistName: artistsData[index].data.name,
-        }));
+        const songsWithArtists = await Promise.all(songsWithArtistsRequests);
 
         setSongs(songsWithArtists);
       } catch (error) {
@@ -63,8 +59,6 @@ const LikedSongs = () => {
     );
   };
 
-  const likedSongsList = songs.filter((song) => song.isFavorite);
-
   if (loading) {
     return (
       <div className="loading-liked">
@@ -73,6 +67,8 @@ const LikedSongs = () => {
       </div>
     );
   }
+
+  const likedSongsList = songs.filter((song) => song.isFavorite);
 
   return (
     <div className="artistpage-container liked-background">
@@ -85,7 +81,7 @@ const LikedSongs = () => {
         <span className="material-symbols-outlined btn-download">download</span>
         <span className="material-symbols-outlined btn-more">more_horiz</span>
       </div>
-      {likedSongsList.length == 0 ? (
+      {likedSongsList.length === 0 ? (
         <div className="no-favorite-container">
           <h2 className="no-favorite-text">
             VOCÊ NÃO TEM MÚSICAS CURTIDAS... AINDA!
